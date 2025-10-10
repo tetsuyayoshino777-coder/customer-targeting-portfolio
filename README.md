@@ -4,19 +4,34 @@
 このリポジトリは、SIGNATE提供の「銀行の顧客ターゲティング」データをもとに、顧客ごとに「定期預金（Y）」と「NISA口座（X）」のどちらを優先提案すべきかを確率的に判定する分析プロジェクトです。RandomForestと確率較正を用いて成功確率を算出し、各顧客に対してより効果的な施策を選択するシミュレーションを実施しています。NISAに関するデータは、顧客属性に基づいて仮想的に生成したものです。
 
 ## ⚙️ 使用技術
-- **プログラミング**：Python（pandas, numpy, scikit-learn, matplotlib, seaborn）
-- **モデル構築**：RandomForestClassifier, CalibratedClassifierCV（確率較正付きモデル）
-- **特徴量処理**：ColumnTransformer, OneHotEncoder, StandardScaler
-- **データ分割**：train / validation / test の三分割による汎化性能検証
-- **評価指標**：ROC-AUC, PR-AUC, LogLoss, Brierスコア, 成功率リフト分析
-- **可視化**：matplotlib / seaborn による分布・精度曲線・ヒストグラム描画
-- **レポーティング**：Jupyter Notebook（Colab）＋ PowerPoint（自動生成による報告書出力）
-- **その他**：git / GitHub（ポートフォリオ公開・バージョン管理）
+- **言語・環境**
+  - Python（pandas, numpy, scikit-learn, matplotlib, seaborn）
+  - Jupyter Notebook / Google Colab による再現性ある分析環境
+
+- **データ前処理**
+  - 数値・カテゴリ変数を自動判別し、`ColumnTransformer` で統合前処理
+  - 数値：`StandardScaler` による標準化  
+    カテゴリ：`OneHotEncoder(handle_unknown='ignore')` によるワンホット化
+  - `Pipeline` 構築により、前処理〜学習〜推論までを一貫化
+
+- **モデル構築**
+  - `RandomForestClassifier`（n_estimators=300, class_weight='balanced'）
+  - 確率較正：`CalibratedClassifierCV(method='sigmoid', cv='prefit')` による Platt scaling
+  - 目的変数（定期預金・NISA）ごとに個別モデルを構築し、成功確率を比較・採択
+
+- **モデル評価**
+  - 識別力指標：ROC-AUC, PR-AUC  
+  - 確率信頼性：LogLoss, Brierスコア, 校正曲線（`calibration_curve`）
+  - 政策評価：Policy成功率、Baseline比較（Always Y / Always X / Random）
+  - 意思決定精度：実際の成功フラグとの整合率
+
+- **可視化**
+  - seaborn / matplotlib による分布・ヒストグラム・精度曲線可視化
+  - 確率分布、校正曲線、Top-N 成功率などをグラフ化して報告資料化
 
 ## 📊 成果物
 - 概要版レポート（8p）: [`docs/report_summary.pdf`](docs/report_summary.pdf)
 - 詳細分析（22p）: [`docs/appendix_trend_analysis.pdf`](docs/appendix_trend_analysis.pdf)
-- スライド資料: [`docs/portfolio_summary_slides.pptx`](docs/portfolio_summary_slides.pptx)
 
 ## 🔒 データについて
 本分析は SIGNATE 提供の「銀行の顧客ターゲティング」データをもとに構成しています。  
