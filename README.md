@@ -31,7 +31,6 @@
 
 ## 📊 成果物
 - 概要版レポート（8p）: [`docs/report_summary.pdf`](docs/report_summary.pdf)
-- 詳細分析（22p）: [`docs/appendix_trend_analysis.pdf`](docs/appendix_trend_analysis.pdf)
 
 ## 🔒 データについて
 本分析は SIGNATE 提供の「銀行の顧客ターゲティング」データをもとに構成しています。  
