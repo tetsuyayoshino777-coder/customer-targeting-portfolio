@@ -30,7 +30,7 @@
   - 確率分布、校正曲線、Top-N 成功率などをグラフ化して報告資料化
 
 ## 📊 成果物
-- 概要版レポート（8p）: [`docs/report_summary.pdf`](docs/report_summary.pdf)
+- 概要版レポート（8p）: [report_summary.pdf](docs/report_summary.pdf)
 
 ## 🔒 データについて
 本分析は SIGNATE 提供の「銀行の顧客ターゲティング」データをもとに構成しています。  
