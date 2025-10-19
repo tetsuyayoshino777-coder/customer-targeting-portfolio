@@ -31,6 +31,7 @@
 
 ## 📊 成果物
 - 概要版レポート（8p）: [report_summary.pdf](https://github.com/tetsuyayoshino777-coder/customer-targeting-portfolio/blob/main/report_summary.pdf)
+- 詳細版レポート（63p）: [report_summary.pdf](https://github.com/tetsuyayoshino777-coder/customer-targeting-portfolio/blob/main/report_complete.pdf)
 
 ## 🔒 データについて
 本分析は SIGNATE 提供の「銀行の顧客ターゲティング」データをもとに構成しています。  
